@@ -16,7 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 authors :
 Nicolas AMIOT		: niamiot@univ-rennes1.fr
-Bernard UGUEN		: buguen@univ-rennes1.fr
+Bernard UGUEN		: bernard.uguen@univ-rennes1.fr
 Mohamed LAARAIEDH	: mohamed.laaraiedh@univ-rennes1.fr
 
 
