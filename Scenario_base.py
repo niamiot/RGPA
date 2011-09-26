@@ -1121,18 +1121,8 @@ if __name__=="__main__":
 
 
 	Res=np.array(([np.mean(S.trgpa),np.mean(S.talg)]))
-#	np.save(str(connect),Res)
+
 
 
 	S.show3()
-#	print S.cla.dlayer[2][0].lbnum
-
-#	plt.clf()
-#	plt.ion()
-#	plt.plot(unique(S.cla.dlayer[S.cla.Nc][0].bd[:,0]))
-#	plt.plot(unique(S.cla.dlayer[S.cla.Nc][0].bd[:,1]))
-#	plt.plot(unique(S.cla.dlayer[S.cla.Nc][1].bd[:,0]))
-#	plt.plot(unique(S.cla.dlayer[S.cla.Nc][1].bd[:,1]))
-#	plt.show()
-
 
