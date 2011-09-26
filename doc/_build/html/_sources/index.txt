@@ -1,0 +1,88 @@
+.. RGPA documentation master file, created by
+   sphinx-quickstart on Thu Sep 15 09:26:57 2011.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to RGPA's documentation!
+================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+.. todo:- constraint exclude  
+    
+
+Constraints
+===========
+
+Constraint
+----------
+.. automodule:: Constraint
+.. autoclass:: Constraint
+	:members:
+
+CLA
+--------
+.. automodule:: CLA
+.. autoclass:: CLA
+	:members:
+
+TOA
+-----
+.. automodule:: TOA
+.. autoclass:: TOA
+	:members:
+
+TDOA
+-----
+.. automodule:: TDOA
+.. autoclass:: TDOA
+	:members:
+RSS
+-----
+.. automodule:: RSS
+.. autoclass:: RSS
+	:members:
+
+Utils
+=====
+
+BoxN
+----
+
+.. automodule:: BoxN
+.. autoclass:: BoxN
+	:members:
+
+LBoxN
+-----
+
+.. automodule:: LBoxN
+.. autoclass:: LBoxN
+	:members:
+
+
+Model
+------
+
+.. automodule:: Model
+.. autoclass:: Model
+	:members:
+
+Scene
+------
+
+.. automodule:: Scene
+.. autoclass:: Scene
+	:members:
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

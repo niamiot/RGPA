@@ -1,0 +1,1470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to RGPA’s documentation! &mdash; RGPA v2.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '2.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="RGPA v2.0 documentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li><a href="#">RGPA v2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-rgpa-s-documentation">
+<h1>Welcome to RGPA&#8217;s documentation!<a class="headerlink" href="#welcome-to-rgpa-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="constraints">
+<h1>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-Constraint">
+<h2>Constraint<a class="headerlink" href="#module-Constraint" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Constraint.Constraint">
+<em class="property">class </em><tt class="descclassname">Constraint.</tt><tt class="descname">Constraint</tt><big>(</big><em>type</em>, <em>p=0</em><big>)</big><a class="headerlink" href="#Constraint.Constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constraint class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Todo:</th><td class="field-body"><p class="first">ini file for geom view !</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first">Constraint.C_Id : Contraint Identity automatically increased for new instanciation</p>
+<p>type    : contraint type
+time    : time stamp
+lbox    : LBoxN intialisation
+runable : boolean. information on constraint center ( TO DO)
+p       : Constraint center
+validity: validity duration ( not use yet)
+self.Id : Constraint.C_Id
+ndim    : Constraint dimension</p>
+<dl class="docutils">
+<dt>parmsh <span class="classifier-delimiter">:</span> <span class="classifier">dictionary</span></dt>
+<dd><dl class="first last docutils">
+<dt>keys <span class="classifier-delimiter">:</span> <span class="classifier">[&#8216;display&#8217;]=True     # launch geomview interactively </span></dt>
+<dd><p class="first last">[&#8216;mode&#8217;]=&#8217;Current&#8217;   # display current box or full constraint
+[&#8216;scene&#8217;]=True      # display whole scene
+[&#8216;point&#8217;]=True       # display constraint point(s)
+[&#8216;boxes&#8217;]=True       # display constraint box
+[&#8216;estimated&#8217;]=True  # display estimated point
+[&#8216;estimated_LS&#8217;]=False # display estimated point with LS method
+[&#8216;quadric&#8217;]=True   # display sphere or hyperbola 
+[&#8216;grid&#8217;]=True       # display grid 
+[&#8216;grav&#8217;]=True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Methods:</th><td class="field-body"><p class="first last">info()     : Display information about constraint
+show3()    : display constraint on Geomview. Parameters tahnks to self.parmsh</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="Constraint.Constraint.info">
+<tt class="descname">info</tt><big>(</big><big>)</big><a class="headerlink" href="#Constraint.Constraint.info" title="Permalink to this definition">¶</a></dt>
+<dd>display info on constraint</dd></dl>
+
+<dl class="method">
+<dt id="Constraint.Constraint.show3">
+<tt class="descname">show3</tt><big>(</big><big>)</big><a class="headerlink" href="#Constraint.Constraint.show3" title="Permalink to this definition">¶</a></dt>
+<dd><p>display constraint on Geomview</p>
+<p>The filename is boxes{Id}.list</p>
+<p>Id is the Id of the current constraint</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-CLA">
+<h2>CLA<a class="headerlink" href="#module-CLA" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="CLA.CLA">
+<em class="property">class </em><tt class="descclassname">CLA.</tt><tt class="descname">CLA</tt><big>(</big><em>parmsh={}</em><big>)</big><a class="headerlink" href="#CLA.CLA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constraint Layer Array class
+The Constraint Layer Array gather all constraints and process them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>c <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>contraints contained in CLA</dd>
+<dt>type <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>types of contraints contained in CLA</dd>
+<dt>std <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>standard deviation of constraints</dd>
+<dt>vcw <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>scale factor of constraints</dd>
+<dt>Nc <span class="classifier-delimiter">:</span> <span class="classifier">integer</span></dt>
+<dd>Layer number of current processing</dd>
+<dt>pe <span class="classifier-delimiter">:</span> <span class="classifier">np.array</span></dt>
+<dd>Position estimated</dd>
+<dt>dlayer <span class="classifier-delimiter">:</span> <span class="classifier">dictionnary</span></dt>
+<dd>key : Layer number  
+value : list of Enclosed (0) and ambiguous (1) boxes.</dd>
+<dt>iter <span class="classifier-delimiter">:</span> <span class="classifier">integer</span></dt>
+<dd>current iteration of refine process</dd>
+<dt>erronous <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd>fills with number constraint which are not compatible.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Methods:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>info(self)
+rescale(self,f_vcw,cid=None)
+annulus_bound(self,cid=None)
+append(self,c)
+setvcw(self,vcw):
+merge2(self,vcw_init=1.0)
+valid_v(self,lv,N)
+refine(self,l,NBOXMAX=100,VOLMIN=0.1)
+show3(self,l=-1,amb=False,sc=&#8217;all&#8217;)
+prob(self,c,d)
+gapdetect(self,l,dlindx)
+min_dist(self,a,b)
+estpos2(self,l=-1,amb=False)</p>
+<dl class="method">
+<dt id="CLA.CLA.annulus_bound">
+<tt class="descname">annulus_bound</tt><big>(</big><em>cid=None</em><big>)</big><a class="headerlink" href="#CLA.CLA.annulus_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>adapt cmin and cmax of constraints</p>
+<p>Update cmin and cmax of constraints for a given self.vcw</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">cid : a list of constraints for which the self.vcw will be applied. If cid=None, all constraints are updates. default=None</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but update boxe size either for each constraints from cid list either for all contraints in the CLA list self.c.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.append">
+<tt class="descname">append</tt><big>(</big><em>c</em><big>)</big><a class="headerlink" href="#CLA.CLA.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a constraint into the CLA</p>
+<p>add a constraint into the CLA</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">c       : any constraint wichi heritates from Constraint object</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but fills self.c list of constraints</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.estpos2">
+<tt class="descname">estpos2</tt><big>(</big><em>l=-1</em>, <em>amb=False</em><big>)</big><a class="headerlink" href="#CLA.CLA.estpos2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Position estimation</p>
+<p>estimate position from the enclosed or/and ambibuous boxes</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">l       : Layer of the estimation. If -1 estimation is made on the highest available layer
+amb     : Use ambiguous boxes (if available) to perform the position estimation. default = False</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:Returns :</dt>
+<dd>Nothing but fills self.pe with an array</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.gapdetect">
+<tt class="descname">gapdetect</tt><big>(</big><em>l</em>, <em>dlindx</em><big>)</big><a class="headerlink" href="#CLA.CLA.gapdetect" title="Permalink to this definition">¶</a></dt>
+<dd><p>basic gap detection</p>
+<p>Detects if separated clusters of boxes are observables. his situation is usual in under determined estimation.
+This only test on each axis if all boxes are contiguous. If not, a gap is declared and clusters are created.</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">l       : layer number
+dlindx  : select the boxes type ( from self.dlayer) for gap detection 0=enclose or 1=ambigous boxes</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">clust   : a list of array. each array contains boxes from the same cluster
+axis    : axis/axes where gap has/have been detectes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.info">
+<tt class="descname">info</tt><big>(</big><big>)</big><a class="headerlink" href="#CLA.CLA.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives info on the CLA</p>
+<div class="admonition-todo admonition " id="todo-71">
+<p class="first admonition-title">Todo</p>
+<p class="last">improve info</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.merge2">
+<tt class="descname">merge2</tt><big>(</big><em>vcw_init=1.0</em><big>)</big><a class="headerlink" href="#CLA.CLA.merge2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge all constraints from the CLA2_reduc2</p>
+<p>Inteligent merging of  constraints in the CLA and look for the smallest intersection box of all the constraints through a dichotomous process.</p>
+<ul class="simple">
+<li>if the result of this merging is empty (no common intersections between all the boxes), all the constraints&#8217;s vcw are increased (x2) and this processing is operated until an intersection exists (physically intersection MUST exist)</li>
+<li>if the result of this merging is not empty (intersection exists between all the boxes), all the constraints&#8217;s vcw are decreased and this processing is operated until no intersection exists. the previous value of vcw is thus used for all constraints.</li>
+</ul>
+<p>This method ensure to find the smallest instersection box satisfaying all the constraints</p>
+<p>Also here is initialized self.dlayer.
+use of dlayer dictionnary:</p>
+<p>self.dlayer[Layer][type of boxes]</p>
+<p>Layer = number of intersecting constraints
+type of boxes : 0 = enclose boxes (EB)</p>
+<blockquote>
+1 = ambiguous boxes (AB)</blockquote>
+<p>After the merging, all constraints boxes are store as AB list. EB list is void.</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">vcw_init        : intial value of scale factor vcw. This value is updated during the process and affect all constraints ! default =1.0</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but fills self.dlayer[Nc][0] (with a void list)  and self.dlayer[Nc][1] (with the intial restricted box). Nc is the number of intersecting constraints</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.min_dist">
+<tt class="descname">min_dist</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="headerlink" href="#CLA.CLA.min_dist" title="Permalink to this definition">¶</a></dt>
+<dd>OBSOLETE</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.prob">
+<tt class="descname">prob</tt><big>(</big><em>c</em>, <em>d</em><big>)</big><a class="headerlink" href="#CLA.CLA.prob" title="Permalink to this definition">¶</a></dt>
+<dd><p>determine probability of list of vertex</p>
+<p>Return the probability of each vertex from an array in regard of the constraint origin, standard deviation and vcw</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">c       : contraint number in the self.c list
+d       : an array of vertex</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Retun:</dt>
+<dd>v       : probability of each vertex</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.refine">
+<tt class="descname">refine</tt><big>(</big><em>l</em>, <em>NBOXMAX=100</em>, <em>VOLMIN=0.10000000000000001</em><big>)</big><a class="headerlink" href="#CLA.CLA.refine" title="Permalink to this definition">¶</a></dt>
+<dd><p>refine the l layer of the CLA</p>
+<p>Refine the l layer of the CLA  until the maximum number of boxes (NBOXMAX) or the minimal volume of boxes (VOLMIN) has been reached.</p>
+<p>Once the CLA has been merged, this method aims to enclose the solution thanks to an octree/quadtreee process</p>
+<p>self.dlayer[l][0] : LBox which contains boxes inside of the validity area (VA)
+self.dlayer[l][1] : LBox which contains ambiguous boxes (partially inside of the VA == at least 1 edge inside the VA)
+All boxes partially inside of the VA are divided into octants. Each octants are tested into the self.valid.</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">self
+l : the layer number
+NBOXMAX : the maximum number of obtained boxes
+VOLMIN :  the minimum volume achievable by the obtained boxes</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing, but fills self.dlayer[l][0] and self.dlayer[l][1] respectively with enclosed boxes and ambiguous boxes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.remove">
+<tt class="descname">remove</tt><big>(</big><em>k</em><big>)</big><a class="headerlink" href="#CLA.CLA.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>OBSOLETE/ TO BE DEVELOPPED</p>
+<p>...</p>
+<p>remove(k) : remove a constraint to cla</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.rescale">
+<tt class="descname">rescale</tt><big>(</big><em>f_vcw</em>, <em>cid=None</em><big>)</big><a class="headerlink" href="#CLA.CLA.rescale" title="Permalink to this definition">¶</a></dt>
+<dd><p>idem setvcw but update current vcw with a multiplier factor</p>
+<p>change vcw for all constraints of the CLA</p>
+<p>...</p>
+<div class="admonition-todo admonition " id="todo-72">
+<p class="first admonition-title">Todo</p>
+<p class="last">Thing to PROPERLY merge with self.setvcw</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">f_vcw : a scale factor of the current vcw of the constraint.
+cid : a list of constraints for which the self.vcw will be applied. If cid=None, all constraints are updates. default=None</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but update vcw either for each constraints from cid list either for all contraints in the CLA list self.c.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.setvcw">
+<tt class="descname">setvcw</tt><big>(</big><em>vcw</em><big>)</big><a class="headerlink" href="#CLA.CLA.setvcw" title="Permalink to this definition">¶</a></dt>
+<dd><p>update scale factor of all constraint</p>
+<p>rescale all the constraints&#8217;s boxes according to the given vcw</p>
+<p>...</p>
+<div class="admonition-todo admonition " id="todo-73">
+<p class="first admonition-title">Todo</p>
+<p class="last">rename &#8216;setvcw&#8217; or trying to merge with &#8216;self.rescale&#8217; in order to be homogene with all constraints (TOA,TDOA,RSS)</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">vcw     : a vcw value</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but update all constraint from the CLA</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.show3">
+<tt class="descname">show3</tt><big>(</big><em>l=-1</em>, <em>amb=False</em>, <em>sc='all'</em><big>)</big><a class="headerlink" href="#CLA.CLA.show3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display constraints and theirs boxes through geomview.</p>
+<p>geomview parameters are the following</p>
+<p>self.parmsh[&#8216;display&#8217;]=False            # launch geomview interactively 
+self.parmsh[&#8216;scene&#8217;]=True               # display whole scene
+self.parmsh[&#8216;boxes&#8217;]=True               # display constraint box
+self.parmsh[&#8216;constr_boxes&#8217;]=False       # display constraint box
+self.parmsh[&#8216;estimated&#8217;]=True           # display estimated point</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">l       : layer number to observe. If -1 estimation is made on the highest available layer. default = -1
+amb     : display ambiguous boxes. default = false
+sc      : display all constraint or give a list with the constrinat number to observe ex: [0,1,3]. default &#8216;all&#8217;</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but calls a geomview instance</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="CLA.CLA.valid_v">
+<tt class="descname">valid_v</tt><big>(</big><em>lv</em>, <em>N</em><big>)</big><a class="headerlink" href="#CLA.CLA.valid_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>test a vertex list with constraints</p>
+<p>Each vertexes from boxes pass into the list are tested to determine if the box is out (OB), ambiguous (AB) or enclosed (EB)</p>
+<p>...</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">self
+lv : a vertex list from BOXN.octants
+N  : number of constraints aka layer number</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">AB : a list with the numerous of Ambiguous Boxes
+EB : a list with the numerous of Enclosed Boxes</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-TOA">
+<h2>TOA<a class="headerlink" href="#module-TOA" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="TOA.TOA">
+<em class="property">class </em><tt class="descclassname">TOA.</tt><tt class="descname">TOA</tt><big>(</big><em>value=30</em>, <em>std=1.0</em>, <em>vcw=3</em>, <em>p=array(</em><span class="optional">[</span><span class="optional">]</span>, <em>dtype=float64)</em><big>)</big><a class="headerlink" href="#TOA.TOA" title="Permalink to this definition">¶</a></dt>
+<dd><p>TOA Constraint</p>
+<p>Description and evaluation of TOA constraints</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>value <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Constraint value in ns. Default = 30</dd>
+<dt>std <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>Value standard deviation in ns. default = 1.0</dd>
+<dt>vcw <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd>scale factor. Default = 1.0</dd>
+<dt>p <span class="classifier-delimiter">:</span> <span class="classifier">np.array 1 x ndim</span></dt>
+<dd>constraint center</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Attributes:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>range   : distance conversion from time self.value.
+sstd    : distance conversion from time self.std
+runable : True NOT USED
+evaluated :False NOT USED               
+self.Id : Constraint ID</p>
+<p>from annulus bound:
+min     : minimum value of observable
+max     : maximum value of observable
+mean    : mean value of observable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Methods:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>annulus_bound(self)     : Compute the minimum and maximum distance of the enclosing annulus of the constraint 
+rescale(self,vcw)       : rescale contraint boundary with a given scale factor &#8216;vcw&#8217;
+inclusive(self,b)       : Is constraint center is inside a box ?
+valid(self,b)           : Test if Lbox is compatible with the constraint
+valid_v(self,lv)        : Test if a liste of a vertexes from a box is compatible with the constraint. vertexes are obtained thanks to LBoxN.bd2coordinates()
+estvol(self)            : Constraint Volume estimation</p>
+<dl class="method">
+<dt id="TOA.TOA.annulus_bound">
+<tt class="descname">annulus_bound</tt><big>(</big><big>)</big><a class="headerlink" href="#TOA.TOA.annulus_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>annulus_bound():
+Compute the minimum and maximum distance of the enclosing annulus of the constraint</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but update cmin, cmax and mean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TOA.TOA.estvol">
+<tt class="descname">estvol</tt><big>(</big><big>)</big><a class="headerlink" href="#TOA.TOA.estvol" title="Permalink to this definition">¶</a></dt>
+<dd>Constraint Volume estimation</dd></dl>
+
+<dl class="method">
+<dt id="TOA.TOA.inclusive">
+<tt class="descname">inclusive</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#TOA.TOA.inclusive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is constraint center is inside a box ?
+:Parameters:</p>
+<blockquote>
+b       : LBoxN</blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TOA.TOA.rescale">
+<tt class="descname">rescale</tt><big>(</big><em>vcw</em><big>)</big><a class="headerlink" href="#TOA.TOA.rescale" title="Permalink to this definition">¶</a></dt>
+<dd><p>rescale bounds of the constraint with vcw factor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>vcw <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">scale factor</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TOA.TOA.valid">
+<tt class="descname">valid</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#TOA.TOA.valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if a box is valid for the given constraint</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">b       : LBoxN</td>
+</tr>
+<tr class="field"><th class="field-name">Return:</th><td class="field-body">True    : if box is enclosed
+False   : if the box is ambiguous
+&#8216;Out&#8217;   : if the box is out</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="TOA.TOA.valid_v">
+<tt class="descname">valid_v</tt><big>(</big><em>v</em><big>)</big><a class="headerlink" href="#TOA.TOA.valid_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if a liste of a vertexes from a box is compatible with the constraint. Vertexes are obtained thanks to LBoxN.bd2coordinates()</p>
+<p>valid_v(v) : check if a set of vertex are valid for the given constraint</p>
+<p>Returns</p>
+<ul class="simple">
+<li>DDbound ( boxes validity)</li>
+<li>TB    for error checker</li>
+</ul>
+<p>DDbound = list[[tested vertex DD&gt;self.cmin],[tested vertex DD&lt;self.cmax]]</p>
+<blockquote>
+<blockquote>
+<blockquote>
+nb box</blockquote>
+<p>&lt;&#8212;&#8212;&#8212;&#8212;&#8211;&gt;</p>
+</blockquote>
+<p>pmin&lt;cmin       |
+pmin&lt;cmax       |</p>
+</blockquote>
+<dl class="docutils">
+<dt>TB =    pmax&lt;cmin       |</dt>
+<dd><p class="first">pmin&lt;cmax       |</p>
+<blockquote class="last">
+<blockquote>
+<blockquote>
+nb vertexes</blockquote>
+<p>&lt;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-&gt;</p>
+</blockquote>
+<p>pmin&lt;Dmin       |
+pmin&lt;Dmax       |</p>
+</blockquote>
+</dd>
+<dt>DDbound =       pmax&lt;Dmin       |</dt>
+<dd>pmin&lt;Dmax       |</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>v <span class="classifier-delimiter">:</span> <span class="classifier">np.arrays</span></dt>
+<dd><p class="first last">a vertexes arrays</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>DDbound <span class="classifier-delimiter">:</span> <span class="classifier">np.array 2 x vertexes containing boolean</span></dt>
+<dd><p class="first last">Test Lboxn boundaries  with contraint</p>
+</dd>
+<dt>TB <span class="classifier-delimiter">:</span> <span class="classifier">np.array 4 v vertexes</span></dt>
+<dd><p class="first last">Multiple test for error checker in Lboxn boundaries  with contraint</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-TDOA">
+<h2>TDOA<a class="headerlink" href="#module-TDOA" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt>
+<tt class="descname">TDOA(value=45, std=4, vcw=3, p=array([[ 0,  0,  0],</tt></dt>
+<dt>
+<tt class="descname">[10, 10, 10]]))</tt></dt>
+<dd><dl class="method">
+<dt id="TDOA.TDOA.annulus_bound">
+<tt class="descclassname">TDOA.</tt><tt class="descname">annulus_bound</tt><big>(</big><big>)</big><a class="headerlink" href="#TDOA.TDOA.annulus_bound" title="Permalink to this definition">¶</a></dt>
+<dd>annulus_bound():
+Compute the minimum and maximum distance of the enclosing annulus of the constraint for a given self.vcw</dd></dl>
+
+<dl class="method">
+<dt id="TDOA.TDOA.inclusive">
+<tt class="descclassname">TDOA.</tt><tt class="descname">inclusive</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#TDOA.TDOA.inclusive" title="Permalink to this definition">¶</a></dt>
+<dd>inclusive(b) : A box b is inclusive for the constraint if self.p is included in the box</dd></dl>
+
+<dl class="method">
+<dt id="TDOA.TDOA.rescale">
+<tt class="descclassname">TDOA.</tt><tt class="descname">rescale</tt><big>(</big><em>vcw</em><big>)</big><a class="headerlink" href="#TDOA.TDOA.rescale" title="Permalink to this definition">¶</a></dt>
+<dd>rescale(vcw) :  rescale constraint with vcw factor</dd></dl>
+
+<dl class="method">
+<dt id="TDOA.TDOA.tdoa_axes">
+<tt class="descclassname">TDOA.</tt><tt class="descname">tdoa_axes</tt><big>(</big><em>p</em><big>)</big><a class="headerlink" href="#TDOA.TDOA.tdoa_axes" title="Permalink to this definition">¶</a></dt>
+<dd>tdoa_axes(self,p) : triedre [vn,wn,tn], support of the contraint</dd></dl>
+
+<dl class="method">
+<dt id="TDOA.TDOA.tdoa_box">
+<tt class="descclassname">TDOA.</tt><tt class="descname">tdoa_box</tt><big>(</big><em>vcw</em><big>)</big><a class="headerlink" href="#TDOA.TDOA.tdoa_box" title="Permalink to this definition">¶</a></dt>
+<dd>tdoa_box(self,vcw) : create the inclusive box for a given vcw</dd></dl>
+
+<dl class="method">
+<dt id="TDOA.TDOA.valid">
+<tt class="descclassname">TDOA.</tt><tt class="descname">valid</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#TDOA.TDOA.valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>valid(b) : check if box b is valid for the given constraint</p>
+<p>A box is valid if it not not valid</p>
+<dl class="docutils">
+<dt>A box is not valid if all distances are greater than rangemax</dt>
+<dd>or all distances are less than rangemin</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="TDOA.TDOA.valid_v">
+<tt class="descclassname">TDOA.</tt><tt class="descname">valid_v</tt><big>(</big><em>v</em><big>)</big><a class="headerlink" href="#TDOA.TDOA.valid_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>valid_v(v) : check if vertex are valid for the given constraint</p>
+<p>A box is valid if it not not valid</p>
+<dl class="docutils">
+<dt>A box is not valid if all distances are greater than rangemax</dt>
+<dd>or all distances are less than rangemin</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-RSS">
+<h2>RSS<a class="headerlink" href="#module-RSS" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="RSS.RSS">
+<em class="property">class </em><tt class="descclassname">RSS.</tt><tt class="descname">RSS</tt><big>(</big><em>value=40</em>, <em>std=1.0</em>, <em>vcw=3</em>, <em>model={}</em>, <em>p=array(</em><span class="optional">[</span><span class="optional">]</span>, <em>dtype=float64)</em><big>)</big><a class="headerlink" href="#RSS.RSS" title="Permalink to this definition">¶</a></dt>
+<dd><p>RSS Constraint</p>
+<p>Description and evaluation of TOA constraints</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>value <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Constraint value in dB. Default = 40</p>
+</dd>
+<dt>std <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Value standard deviation in dB. default = 1.0</p>
+</dd>
+<dt>vcw <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">scale factor. Default = 1.0</p>
+</dd>
+<dt>model <span class="classifier-delimiter">:</span> <span class="classifier">dictionnary</span></dt>
+<dd><dl class="first last docutils">
+<dt>keys:   self.model[&#8216;PL0&#8217;] =-34.7</dt>
+<dd><p class="first last">self.model[&#8216;d0&#8217;]  = 1.0 
+self.model[&#8216;RSSnp&#8217;] = 2.64      
+self.model[&#8216;RSSStd&#8217;] = 4.34 
+self.model[&#8216;Rest&#8217;] = &#8216;mode&#8217;</p>
+</dd>
+</dl>
+</dd>
+<dt>p <span class="classifier-delimiter">:</span> <span class="classifier">np.array 1 x ndim</span></dt>
+<dd><p class="first last">constraint center</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first">range   : distance conversion from time self.value.
+sstd    : distance conversion from time self.std
+runable : True NOT USED
+evaluated :False NOT USED               
+self.Id : Constraint ID</p>
+<p>from annulus bound:
+min     : minimum value of observable
+max     : maximum value of observable
+mean    : mean value of observable</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Methods:</th><td class="field-body"><p class="first last">annulus_bound(self)     : Compute the minimum and maximum distance of the enclosing annulus of the constraint 
+rescale(self,vcw)       : rescale contraint boundary with a given scale factor &#8216;vcw&#8217;
+inclusive(self,b)       : Is constraint center is inside a box ?
+valid(self,b)           : Test if Lbox is compatible with the constraint
+valid_v(self,lv)        : Test if a liste of a vertexes from a box is compatible with the constraint. vertexes are obtained thanks to LBoxN.bd2coordinates()
+estvol(self)            : Constraint Volume estimation</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="RSS.RSS.annulus_bound">
+<tt class="descname">annulus_bound</tt><big>(</big><big>)</big><a class="headerlink" href="#RSS.RSS.annulus_bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>annulus_bound():
+Compute the minimum and maximum distance of the enclosing annulus of the constraint</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Nothing but update cmin, cmax</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="RSS.RSS.estvol">
+<tt class="descname">estvol</tt><big>(</big><big>)</big><a class="headerlink" href="#RSS.RSS.estvol" title="Permalink to this definition">¶</a></dt>
+<dd>Constraint Volume estimation</dd></dl>
+
+<dl class="method">
+<dt id="RSS.RSS.inclusive">
+<tt class="descname">inclusive</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#RSS.RSS.inclusive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is constraint center is inside a box ?
+:Parameters:</p>
+<blockquote>
+b       : LBoxN</blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">Boolean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="RSS.RSS.rescale">
+<tt class="descname">rescale</tt><big>(</big><em>vcw</em><big>)</big><a class="headerlink" href="#RSS.RSS.rescale" title="Permalink to this definition">¶</a></dt>
+<dd><p>rescale bounds of the constraint with vcw factor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt>vcw <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">scale factor</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="RSS.RSS.valid">
+<tt class="descname">valid</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#RSS.RSS.valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if a box is valid for the given constraint</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body">b       : LBoxN</td>
+</tr>
+<tr class="field"><th class="field-name">Return:</th><td class="field-body">True    : if box is enclosed
+False   : if the box is ambiguous
+&#8216;Out&#8217;   : if the box is out</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="RSS.RSS.valid_v">
+<tt class="descname">valid_v</tt><big>(</big><em>v</em><big>)</big><a class="headerlink" href="#RSS.RSS.valid_v" title="Permalink to this definition">¶</a></dt>
+<dd><p>valid_v(v) : check if vertex are valid for the given constraint</p>
+<p>A box is valid if it not not valid</p>
+<dl class="docutils">
+<dt>A box is not valid if all distances are greater than rangemax</dt>
+<dd>or all distances are less than rangemin</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="utils">
+<h1>Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-BoxN">
+<h2>BoxN<a class="headerlink" href="#module-BoxN" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="BoxN.BoxN">
+<em class="property">class </em><tt class="descclassname">BoxN.</tt><tt class="descname">BoxN</tt><big>(</big><em>bd=None</em>, <em>ndim=3</em><big>)</big><a class="headerlink" href="#BoxN.BoxN" title="Permalink to this definition">¶</a></dt>
+<dd><p>BoxN Class</p>
+<p>A box is determined by its boundary interval along each dimension</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Todo:</th><td class="field-body"><p class="first">remove parmsh to a ini file</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first docutils">
+<dt>bd <span class="classifier-delimiter">:</span> <span class="classifier">numpy array 2 x ndim  </span></dt>
+<dd><p class="first last">box boundary</p>
+</dd>
+<dt>ndim <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">dimension of the box (2D, 3D,...)</p>
+</dd>
+<dt>self.parmsh <span class="classifier-delimiter">:</span> <span class="classifier">dictionnary</span></dt>
+<dd><p class="first">display dictionnary for show 3 method TO BE CHANGE !!!
+keys    :[&#8216;display&#8217;]=True</p>
+<blockquote class="last">
+<p>[&#8216;interactive&#8217;]=False</p>
+</blockquote>
+</dd>
+</dl>
+<p>OBTAIN FROM mesure()
+self.mes        : array 1 x ndim</p>
+<blockquote>
+<p>size of intervals of each dimension</p>
+</blockquote>
+<dl class="docutils">
+<dt>self.ctr <span class="classifier-delimiter">:</span> <span class="classifier">array 1 x ndim </span></dt>
+<dd><p class="first last">center of intervals of each dimension</p>
+</dd>
+<dt>self.vol <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Volume of box</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Methods:</th><td class="field-body"><p class="first">info()         : info about class 
+def mesure(self):</p>
+<blockquote>
+<p>measure intervals of box</p>
+</blockquote>
+<p class="last">volume()       : evaluate volume 
+inbox(p)       : is p in box ?
+intersect(box) : intersection of two boxes                      
+show3()        : geomview vizualization 
+cut()          : cut a box along given direction</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="BoxN.BoxN.bd2coord">
+<tt class="descname">bd2coord</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.BoxN.bd2coord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boundary to coordinates</p>
+<p>Return an array containing of vertex from a box</p>
+<p>3D case : 
+in :
+[xmin ymin zmin]       
+[xmax ymax zmax]</p>
+<p>out :</p>
+<p>[xmin ymin zmin]
+[xmin ymax zmin]
+[xmax ymin zmin]
+[xmax ymax zmin]
+[xmin ymin zmax]
+[xmin ymax zmax]
+[xmax ymin zmax]
+[xmax ymax zmax]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return:</th><td class="field-body"><dl class="first last docutils">
+<dt>P <span class="classifier-delimiter">:</span> <span class="classifier">array 2^ndim x ndim</span></dt>
+<dd><p class="first last">coordinates of box vertex</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.bdiff">
+<tt class="descname">bdiff</tt><big>(</big><em>box</em><big>)</big><a class="headerlink" href="#BoxN.BoxN.bdiff" title="Permalink to this definition">¶</a></dt>
+<dd><p>OBSOLETE</p>
+<p>USE self.intersect instead !!!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.coord2bd">
+<tt class="descname">coord2bd</tt><big>(</big><em>coord</em><big>)</big><a class="headerlink" href="#BoxN.BoxN.coord2bd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coordinates to boundary
+update boundary array from numpy array  of coordinates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>coord <span class="classifier-delimiter">:</span> <span class="classifier">array 2^ndim x ndim</span></dt>
+<dd><p class="first last">vertexes coordinates of a boxN</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return:</th><td class="field-body"><p class="first last">Nothing but fills self.bd</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.info">
+<tt class="descname">info</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.BoxN.info" title="Permalink to this definition">¶</a></dt>
+<dd>Information on BoxN</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.intersect">
+<tt class="descname">intersect</tt><big>(</big><em>box</em><big>)</big><a class="headerlink" href="#BoxN.BoxN.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find intersection between current box and a given one</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameter:</th><td class="field-body"><dl class="first docutils">
+<dt>box <span class="classifier-delimiter">:</span> <span class="classifier">BoxN</span></dt>
+<dd><p class="first last">a BoxN object</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return:</th><td class="field-body"><dl class="first last docutils">
+<dt>new_box <span class="classifier-delimiter">:</span> <span class="classifier">BoxN</span></dt>
+<dd><p class="first last">a BoxN object</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.mesure">
+<tt class="descname">mesure</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.BoxN.mesure" title="Permalink to this definition">¶</a></dt>
+<dd>Measure BoxN
+Obtain measure of :
+- size of each interval from each dimension 
+- center of each interval from each dimension 
+- Volume of the BoxN</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.octant">
+<tt class="descname">octant</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.BoxN.octant" title="Permalink to this definition">¶</a></dt>
+<dd><p>quadtree on boxes OBSOLETE</p>
+<p>Divide boxes into 2^ndim equal parts
+aka Split each interval from each dimension into 2 equal part</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.setbd">
+<tt class="descname">setbd</tt><big>(</big><em>vmin</em>, <em>vmax</em>, <em>axis=0</em><big>)</big><a class="headerlink" href="#BoxN.BoxN.setbd" title="Permalink to this definition">¶</a></dt>
+<dd>setbd : set boundary value on axis</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.show3">
+<tt class="descname">show3</tt><big>(</big><em>dim=(0</em>, <em>1</em>, <em>2)</em>, <em>col='r'</em>, <em>Id=</em><span class="optional">[</span>, <em>0</em><span class="optional">]</span>, <em>H_Id=0</em>, <em>alpha=0.20000000000000001</em><big>)</big><a class="headerlink" href="#BoxN.BoxN.show3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show box into geomview</p>
+<p>generate a geomview file which allow to represent a box.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>dim <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd><p class="first last">chose dimension to display. default : (0,1,2)</p>
+</dd>
+<dt>col <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">choose box color. compliant with matplotlib colorConverter. default &#8216;r&#8217;</p>
+</dd>
+<dt>Id <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">Identity of boxes to show.Default : [0]</p>
+</dd>
+<dt>alpha <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">set transparency. Default 0.2</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return:</th><td class="field-body"><dl class="first last docutils">
+<dt>fname <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">name of the generated file</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.BoxN.void">
+<tt class="descname">void</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.BoxN.void" title="Permalink to this definition">¶</a></dt>
+<dd>return True if box is void</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lboxn">
+<h2>LBoxN<a class="headerlink" href="#lboxn" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="BoxN.LBoxN">
+<em class="property">class </em><tt class="descclassname">BoxN.</tt><tt class="descname">LBoxN</tt><big>(</big><em>Lb=None</em>, <em>ndim=3</em><big>)</big><a class="headerlink" href="#BoxN.LBoxN" title="Permalink to this definition">¶</a></dt>
+<dd><p>class LBoxN 
+List of BoxN</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Atributes:</th><td class="field-body"><dl class="first docutils">
+<dt>box <span class="classifier-delimiter">:</span> <span class="classifier">np.array</span></dt>
+<dd><p class="first last">array containing BoxN object. default void</p>
+</dd>
+<dt>vol <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">volume of each boxes from self.box. default void</p>
+</dd>
+<dt>bd <span class="classifier-delimiter">:</span> <span class="classifier">np.arrays     2*len(box) x ndim</span></dt>
+<dd><p class="first last">contains all the boundaries of boxes from self.box. default void</p>
+</dd>
+<dt>ndim <span class="classifier-delimiter">:</span> <span class="classifier">int   </span></dt>
+<dd><p class="first last">dimension of the nbox</p>
+</dd>
+<dt>parmsh <span class="classifier-delimiter">:</span> <span class="classifier">dictionnary</span></dt>
+<dd><dl class="first last docutils">
+<dt>keys [&#8216;display&#8217;]        =True</dt>
+<dd><p class="first last">[&#8216;interactive&#8217;]    =False</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>LB <span class="classifier-delimiter">:</span> <span class="classifier">LBoxN </span></dt>
+<dd><p class="first last">Create a BoxN object from another one. default : None, the LBoxN obebject created is void.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Methods:</th><td class="field-body"><dl class="first last docutils">
+<dt>mesure(self):</dt>
+<dd><p class="first last">measure intervals of box</p>
+</dd>
+<dt>append(self,b):</dt>
+<dd><p class="first last">append a box &#8216;b&#8217; to a Lbox</p>
+</dd>
+<dt>append_l(self,lb):</dt>
+<dd><p class="first last">append a lbox &#8216;lb&#8217; to a lbox</p>
+</dd>
+<dt>info(self):</dt>
+<dd><p class="first last">display LBoxN information</p>
+</dd>
+<dt>bd2coord(self,Mapping = False):</dt>
+<dd><p class="first last">convert boundaries of Lbox to their vertexes coordintates</p>
+</dd>
+<dt>octant(self):</dt>
+<dd><p class="first last">quadtree on Lboxes</p>
+</dd>
+<dt>volume(self):</dt>
+<dd><p class="first last">estimate volume of LBoxes</p>
+</dd>
+<dt>intersect(self,lb):</dt>
+<dd><p class="first last">EXPERIMENTAL find the intersection of LBoxN</p>
+</dd>
+<dt>show3(self,col=&#8217;b&#8217;,Id=0):               </dt>
+<dd><p class="first last">required file generation for geomview display</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="BoxN.LBoxN.append">
+<tt class="descname">append</tt><big>(</big><em>b</em><big>)</big><a class="headerlink" href="#BoxN.LBoxN.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>append : Append a box to LboxN</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>b <span class="classifier-delimiter">:</span> <span class="classifier">BoxN</span></dt>
+<dd><p class="first last">box to added</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Nothing but update self.box status</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.append_l">
+<tt class="descname">append_l</tt><big>(</big><em>lb</em><big>)</big><a class="headerlink" href="#BoxN.LBoxN.append_l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append  LBoxN to LBoxN</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>lb <span class="classifier-delimiter">:</span> <span class="classifier">LBoxN</span></dt>
+<dd><p class="first last">lbox to be added</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Nothing but update self.box status</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.bd2coord">
+<tt class="descname">bd2coord</tt><big>(</big><em>Mapping=False</em><big>)</big><a class="headerlink" href="#BoxN.LBoxN.bd2coord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boundaru to coordinates</p>
+<p>Convert boundaries of Lbox to their vertexes coordintates</p>
+<p>in :
+[xmin ymin zmin]       
+[xmax ymax zmax]</p>
+<p>out :</p>
+<p>[xmin ymin zmin]
+[xmin ymax zmin]
+[xmax ymin zmin]
+[xmax ymax zmin]
+[xmin ymin zmax]
+[xmin ymax zmax]
+[xmax ymin zmax]
+[xmax ymax zmax]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>Mapping <span class="classifier-delimiter">:</span> <span class="classifier">Boolean</span></dt>
+<dd><p class="first last">return a mapping of the vertex in regards of Lbox. Default = False</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return:</th><td class="field-body"><dl class="first last docutils">
+<dt>P <span class="classifier-delimiter">:</span> <span class="classifier">array 2^ndim x ndim</span></dt>
+<dd><p class="first last">coordinates of box vertex</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.info">
+<tt class="descname">info</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.LBoxN.info" title="Permalink to this definition">¶</a></dt>
+<dd>display LBoxN information</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.intersect">
+<tt class="descname">intersect</tt><big>(</big><em>lb</em><big>)</big><a class="headerlink" href="#BoxN.LBoxN.intersect" title="Permalink to this definition">¶</a></dt>
+<dd>EXPERIMENTAL
+Intersection of 2 LBOXN</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.mesure">
+<tt class="descname">mesure</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.LBoxN.mesure" title="Permalink to this definition">¶</a></dt>
+<dd>LMeasure BoxN
+Obtain measure of :
+- size of each interval from each dimension for each boxes
+- center of each interval from each dimension for each boxes
+- !!!! BUGGED Volume of the BoxN for each boxes</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.octant">
+<tt class="descname">octant</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.LBoxN.octant" title="Permalink to this definition">¶</a></dt>
+<dd><p>quadtree on boxes</p>
+<p>Divide each Lboxes into 2^ndim equal parts
+aka Split each interval from each dimension into 2 equal part</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt>lb <span class="classifier-delimiter">:</span> <span class="classifier">LBoxN 2^ndim*self.box x ndim</span></dt>
+<dd><p class="first last">return theLBoxn from quadtree process</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.show3">
+<tt class="descname">show3</tt><big>(</big><em>col='b'</em>, <em>Id=0</em><big>)</big><a class="headerlink" href="#BoxN.LBoxN.show3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show box into geomview</p>
+<p>generate a geomview file which allow to represent a box.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt>col <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">choose box color. compliant with matplotlib colorConverter. default &#8216;r&#8217;</p>
+</dd>
+<dt>Id <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">Identity of boxes to show.Default : [0]</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return:</th><td class="field-body"><dl class="first last docutils">
+<dt>filename <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">name of the generated file</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="BoxN.LBoxN.volume">
+<tt class="descname">volume</tt><big>(</big><big>)</big><a class="headerlink" href="#BoxN.LBoxN.volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate Boxes volume</p>
+<p>Compute the volume on each LBoxes</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Model">
+<h2>Model<a class="headerlink" href="#module-Model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Model.Model">
+<em class="property">class </em><tt class="descclassname">Model.</tt><tt class="descname">Model</tt><big>(</big><em>f=3.0</em>, <em>n=2.6400000000000001</em>, <em>d0=1.0</em>, <em>method='OneSlope'</em>, <em>d=array(</em><span class="optional">[</span><span class="optional">]</span>, <em>dtype=float64)</em>, <em>PL=array(</em><span class="optional">[</span><span class="optional">]</span>, <em>dtype=float64)</em><big>)</big><a class="headerlink" href="#Model.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>RSS model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Attributes:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>f : frequency in GHz
+n : path loss exponent
+method : used model</p>
+<dl class="method">
+<dt id="Model.Model.OneSlope">
+<tt class="descname">OneSlope</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#Model.Model.OneSlope" title="Permalink to this definition">¶</a></dt>
+<dd><p>OneSlope model : give Power Level from distance  with OneSlope method</p>
+<p>f : frequency  GHz
+n : path loss exponent
+D : Distance array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Model.Model.PL0_c">
+<tt class="descname">PL0_c</tt><big>(</big><em>Gt=0</em>, <em>Gr=0</em><big>)</big><a class="headerlink" href="#Model.Model.PL0_c" title="Permalink to this definition">¶</a></dt>
+<dd>PL0_c : PL0 compute
+f  : frequency GHz
+Gt : transmitting antenna gain dB (default 0 dB) 
+Gr : receiving antenna gain dB (default 0 dB)</dd></dl>
+
+<dl class="method">
+<dt id="Model.Model.get_PL">
+<tt class="descname">get_PL</tt><big>(</big><em>d</em><big>)</big><a class="headerlink" href="#Model.Model.get_PL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Power Level from a given distance</p>
+<p>d : distance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Model.Model.get_d">
+<tt class="descname">get_d</tt><big>(</big><em>PL</em><big>)</big><a class="headerlink" href="#Model.Model.get_d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get  distance from a given Power Level</p>
+<p>d : distance</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Model.Model.iOneSlope">
+<tt class="descname">iOneSlope</tt><big>(</big><em>PL</em><big>)</big><a class="headerlink" href="#Model.Model.iOneSlope" title="Permalink to this definition">¶</a></dt>
+<dd><p>inverse OneSlope model : give distance from Power Level with OneSlope method</p>
+<p>f : frequency  GHz
+n : path loss exponent
+D : Distance array</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Scene">
+<h2>Scene<a class="headerlink" href="#module-Scene" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="Scene.Scene">
+<em class="property">class </em><tt class="descclassname">Scene.</tt><tt class="descname">Scene</tt><big>(</big><em>an</em>, <em>bn</em><big>)</big><a class="headerlink" href="#Scene.Scene" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scene creator for Geomview display</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first docutils">
+<dt>an <span class="classifier-delimiter">:</span> <span class="classifier">np.array</span></dt>
+<dd><p class="first last">anchors nodes</p>
+</dd>
+<dt>bn <span class="classifier-delimiter">:</span> <span class="classifier">np.array</span></dt>
+<dd><p class="first last">blind nodes</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Methods:</th><td class="field-body"><dl class="first last docutils">
+<dt>generate :</dt>
+<dd><p class="first last">create scene</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference external" href="modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference external" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="#">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Welcome to RGPA&#8217;s documentation!</a><ul>
+</ul>
+</li>
+<li><a class="reference external" href="#constraints">Constraints</a><ul>
+<li><a class="reference external" href="#module-Constraint">Constraint</a></li>
+<li><a class="reference external" href="#module-CLA">CLA</a></li>
+<li><a class="reference external" href="#module-TOA">TOA</a></li>
+<li><a class="reference external" href="#module-TDOA">TDOA</a></li>
+<li><a class="reference external" href="#module-RSS">RSS</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#utils">Utils</a><ul>
+<li><a class="reference external" href="#module-BoxN">BoxN</a></li>
+<li><a class="reference external" href="#lboxn">LBoxN</a></li>
+<li><a class="reference external" href="#module-Model">Model</a></li>
+<li><a class="reference external" href="#module-Scene">Scene</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li><a href="#">RGPA v2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, Nicolas AMIOT, Bernard UGUEN, Mohamed Laaraeidh.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.4.
+    </div>
+  </body>
+</html>
