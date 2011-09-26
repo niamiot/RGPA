@@ -63,7 +63,7 @@ class TOA(Constraint):
 	estvol(self)		: Constraint Volume estimation 
 
 	"""
-	def __init__(self,value=30,std=1.0,vcw=3,p=np.array([])):
+	def __init__(self,value=30,std=1.0,vcw=3,p=BoxN()):
 		Constraint.__init__(self,'TOA',p)
 
 		self.value  = value 
