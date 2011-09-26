@@ -17,8 +17,8 @@
 
 #-------------------------------------------------------------------
 #authors :
-#Nicolas AMIOT		: niamiot@univ-rennes1.fr
-#Bernard UGUEN		: buguen@univ-rennes1.fr
+#Nicolas AMIOT		: nicolas.amiot@univ-rennes1.fr
+#Bernard UGUEN		: bernard.uguen@univ-rennes1.fr
 #Mohamed LAARAIEDH	: mohamed.laaraiedh@univ-rennes1.fr
 #####################################################################
 import numpy as np  
