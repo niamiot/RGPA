@@ -1,0 +1,15 @@
+
+Upgrates :
+
+- Dynamic version
+- Cooperative version
+- Create a GUI
+
+
+Clean-up :
+
+- Create a ini file to load default simulaiton configuration.
+- Remove obsolete functions
+- Create test directory and tests for all functions
+
+
