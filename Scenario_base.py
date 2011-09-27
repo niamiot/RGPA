@@ -394,7 +394,7 @@ class Scenario(object):
                                         C      = TOA(value=value*1e9,
                                                      std=self.std_v[ibn,ian]*1e9,
                                                      vcw=self.parmsc['vcw'],
-                                                      p=pan)
+                                                      p=pan,pstd=0.0)
 
                                         cla.append(C)
 					TC2=time.time()
@@ -434,7 +434,7 @@ class Scenario(object):
                                         C    = TDOA(value=-value*1e9,
                                                     std=(self.std_v[ibn,ian]*1e9),
                                                     vcw=self.parmsc['vcw'],
-                                                    p = pan)
+                                                    p = pan ,pstd = np.array([0.0,0.0]))
                                         cla.append(C)
 					TC2=time.time()
                                         #C    = TDOA(p=pan,value=value,std=2)
@@ -495,6 +495,8 @@ class Scenario(object):
                         # 
                         ######################### CLA TOTALE
 			TR1=time.time()
+			if ibn == 227:
+				pdb.set_trace()
 			cla.merge2()
                         cla.refine(cla.Nc)
                         self.cla = cla
@@ -975,7 +977,7 @@ if __name__=="__main__":
         H2 = H1
         H3 = H1
         
-        Nbn  = 1000
+        Nbn  = 500
 #        file=open('Time_Geo.txt', 'w')
 #        file1=open('Geo_vs_ML.txt', 'w')
        	ndim =2
@@ -983,7 +985,7 @@ if __name__=="__main__":
 
         connect = {}
         connect['RSS']  = 0
-        connect['TOA']  = 0
+        connect['TOA']  = 1
         connect['TDOA'] = 1
         
 
@@ -1057,7 +1059,7 @@ if __name__=="__main__":
 		BOUND1=BOUND1[:2]
 		BOUND2=BOUND2[:2]
         ##### RANDOM BLIND NODES
-	#random.seed(seed=0)
+	random.seed(seed=0)
         bn   = L*rand(Nbn,ndim)
 	if ndim == 3:
 	        bn[:,2]   = 0.0 
@@ -1077,8 +1079,8 @@ if __name__=="__main__":
         parmsc['save_CLA']       = False 
 
         parmsc['sigma_max_RSS']      = 3.98        # en (dB) 
-        parmsc['sigma_max_TOA']      = 1.142       # en (m)  
-        parmsc['sigma_max_TDOA']      = 1.85      # en (m)  
+        parmsc['sigma_max_TOA']      = 10.142       # en (m)  
+        parmsc['sigma_max_TDOA']      = 10.85      # en (m)  
 
         parmsc['std_dev_arange'] = np.array([3]) # arange(1.,4.,1.)
         parmsc['scenar_type']    ='simulated'    # 'monte_carlo'  # choose the type of scenario : Simulated : give some AN and BN. 

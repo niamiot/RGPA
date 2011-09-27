@@ -63,8 +63,13 @@ class TOA(Constraint):
 	estvol(self)		: Constraint Volume estimation 
 
 	"""
-	def __init__(self,value=30,std=1.0,vcw=3,p=BoxN()):
+	def __init__(self,value=30,std=1.0,vcw=3,p=np.array([]),pstd=0.1):
 		Constraint.__init__(self,'TOA',p)
+
+
+		####### Constraint center information
+		self.p=p
+		self.pstd=pstd
 
 		self.value  = value 
 		self.std    = std
@@ -86,8 +91,8 @@ class TOA(Constraint):
 		:Returns:
 			Nothing but update cmin, cmax and mean
 		"""
-		self.cmin = max(0.0,self.range - self.vcw*self.sstd	)
-		self.cmax = self.range + self.vcw*self.sstd	
+		self.cmin = max(0.0,self.range - self.vcw*self.sstd - self.pstd)
+		self.cmax = self.range + self.vcw*self.sstd + self.pstd	
 
 
 
@@ -101,7 +106,7 @@ class TOA(Constraint):
 		"""
 		self.vcw = vcw
 		dx          = max(0.0,self.range+(self.vcw*self.std)*0.3)*np.ones(len(self.p))
-		box         = BoxN(np.array([self.p-dx,self.p+dx]),ndim=len(self.p))
+		box         = BoxN(np.array([self.p-dx-self.pstd,self.p+dx+self.pstd]),ndim=len(self.p))
 #		box         = BoxN(np.array([[self.p[0]-dx,
 #					      self.p[1]-dx,
 #					      self.p[2]-dx],

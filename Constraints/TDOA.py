@@ -30,7 +30,7 @@ from Constraint import *
 
 	
 class TDOA(Constraint):		
-	def __init__(self,value=45,std=4,vcw=3,p=np.array([[0,0,0],[10,10,10]])):
+	def __init__(self,value=45,std=4,vcw=3,p=np.array([[0,0,0],[10,10,10]]),pstd=np.array([1.0,1.0])):
 		"""
 		tdoa = (|F1M| - |F2M|)/0.3 = (|p1M| - |p2M|)/0.3    (ns)
 		
@@ -48,6 +48,8 @@ class TDOA(Constraint):
 		Constraint.__init__(self,'TDOA',p)
 	
 
+		self.p=p
+		self.pstd=pstd
 		#
 		# (vn,wn,tn) triedre orthonormal
 		#
@@ -92,7 +94,7 @@ class TDOA(Constraint):
 		# La boite du tdoa est tronquee
 		#
 		self.F1          = p[0,:]
-		self.F2          = p[1,:] 
+		self.F2          = p[1,:]
 		#
 		#
 		#
@@ -134,7 +136,7 @@ class TDOA(Constraint):
 
 
 		eps          = vcw*self.sstd
-	        delta        = self.drange
+	        delta        = self.drange - abs(self.pstd[0]) - abs(self.pstd[1])
 		deltap       = min(delta+eps,self.nv)
 		deltam       = max(delta-eps,-self.nv)
 		c            = delta/2
@@ -205,11 +207,11 @@ class TDOA(Constraint):
 		Compute the minimum and maximum distance of the enclosing annulus of the constraint for a given self.vcw
 		"""
 		if self.value >0:
-			self.cmin = self.drange-self.vcw*self.sstd
-			self.cmax = self.drange+self.vcw*self.sstd
+			self.cmin = self.drange-self.vcw*self.sstd - np.max(self.pstd)
+			self.cmax = self.drange+self.vcw*self.sstd + np.max(self.pstd)
 		else :
-			self.cmin = self.drange+self.vcw*self.sstd
-			self.cmax = self.drange-self.vcw*self.sstd
+			self.cmin = self.drange+self.vcw*self.sstd + np.max(self.pstd)
+			self.cmax = self.drange-self.vcw*self.sstd - np.max(self.pstd)
 
 		self.mean = 	(self.cmin+self.cmax)/2
 
