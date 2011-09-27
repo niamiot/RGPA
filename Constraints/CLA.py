@@ -304,7 +304,7 @@ class CLA(object):
 		vcwmin = max(self.vcw)
 		step = 0.5
 		vcw1 = vcwmin + step
-
+		self.erro=np.zeros(self.Nc)
 
 		onlyRSS=False
 		if 'RSS' in self.type:
@@ -335,15 +335,26 @@ class CLA(object):
 					if (c.type != 'RSS') or onlyRSS :
 						lb      = c.lbox
 						try : 
+							tlbc = tlb
 							tlb  = tlb.intersect(lb)
 						except:	
 							tlb  = lb 
+							tlbc = tlb
 					else :
 						pass
+					print tlb.bd
 				else :
 					ex = c
 
 
+				try :
+					if (len(tlbc.box) != 0) and (len(tlb.box) == 0):
+						self.erro[c.id]=self.erro[c.id]+1
+						tlb=tlbc
+				except :
+					pass
+
+			pdb.set_trace()
 			if len(tlb.box)==0:		# if the list is empty (no intersection ) vcw1 is increased
 				vcw1 = vcw1 + step
 				step = step*1.1
@@ -543,7 +554,7 @@ class CLA(object):
 
 			# Update AB
 			self.dlayer[l][1]=LBoxN(B.box[AB],ndim=self.ndim)
-
+			
 	
 			# check if it remains is more AB to refine
 			if nboxamb != 0:
@@ -704,7 +715,7 @@ class CLA(object):
 
 		elif self.c[c].type =='TOA':
 
-			v = (1/(((self.c[c].sstd)*self.c[c].vcw)*np.sqrt(2*np.pi)))*np.exp(-(d-self.c[c].value*0.3)**2/(2*(self.c[c].sstd)*self.c[c].vcw)**2)
+			v = ((1/(((self.c[c].sstd)*self.c[c].vcw + self.c[c].pstd)*np.sqrt(2*np.pi)))*np.exp(-(d-self.c[c].value*0.3 - self.c[c].pstd)**2/(2*(self.c[c].sstd)*self.c[c].vcw + self.c[c].pstd )**2) + (1/(((self.c[c].sstd)*self.c[c].vcw + self.c[c].pstd)*np.sqrt(2*np.pi)))*np.exp(-(d-self.c[c].value*0.3 + self.c[c].pstd)**2/(2*(self.c[c].sstd)*self.c[c].vcw + self.c[c].pstd )**2)) /2.
 
 
 
